@@ -1,0 +1,1113 @@
+{
+	"info": {
+		"_postman_id": "71cfc145-c64f-4c20-a31d-666cd5974977",
+		"name": "Opendr Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28841893"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData=pm.response.json();\r",
+									"pm.environment.set(\"token\", jsonData.token);\r",
+									"\r",
+									"pm.test(\"Token has created and verified\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "practiceId",
+								"value": "1223",
+								"type": "text"
+							},
+							{
+								"key": "practiceName",
+								"value": "University Radiology",
+								"type": "text"
+							},
+							{
+								"key": "clientApiKey",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"urgapiuser@mailcatch.com\",\n\t\"password\": \"6d35ebf644acee05c7cfda665b3686f0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://apistest.opendr.com/staging/v1/oauth/login/",
+							"protocol": "https",
+							"host": [
+								"apistest",
+								"opendr",
+								"com"
+							],
+							"path": [
+								"staging",
+								"v1",
+								"oauth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "practiceId",
+										"value": "1223",
+										"type": "text"
+									},
+									{
+										"key": "practiceName",
+										"value": "University Radiology",
+										"type": "text"
+									},
+									{
+										"key": "clientApiKey",
+										"value": "",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"urgapiuser@mailcatch.com\",\n\t\"password\": \"6d35ebf644acee05c7cfda665b3686f0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://apistest.opendr.com/ibm/v1/oauth/login/",
+									"protocol": "https",
+									"host": [
+										"apistest",
+										"opendr",
+										"com"
+									],
+									"path": [
+										"ibm",
+										"v1",
+										"oauth",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 12:36:07 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "256"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-powered-by",
+									"value": "Express"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"100-fmvE7TeKrA813W6y021dmM/iC2I\""
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"auth\": true,\n    \"token\": \"ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbTFsY21kbFFHMWhhV3hwYm1GMGIzSXVZMjl0SWl3aWFXRjBJam94TmpJM016QXlPVFkzTENKbGVIQWlPakUyTWpjek1ETTROamQ5LnhJc2EwQzJxTzlyWlBPZHRib1RIUUk3WndFREduaHNFZlZSYW1INDJ2cnc=\"\n}"
+						}
+					]
+				},
+				{
+					"name": "FetchPatient Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Patient created successfully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "abc",
+								"value": "8989",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Adammer\",\n    \"middleName\": \"Roxa\",\n    \"lastName\": \"Oppa\",\n    \"dateOfBirth\": \"1950-01-02\",\n    \"gender\": \"M\",\n    \"phone\": [\n        {\n            \"cellPhoneNo\": \"5874566668\",\n            \"homePhoneNo\": \"\",\n            \"workPhoneNo\": \"\"\n        }\n    ],\n    \"address\": [\n        {\n            \"address1\": \"Test 1\",\n            \"address2\": \"Test 3\",\n            \"state\": \"\",\n            \"city\": \"newyork\",\n            \"zipCode\": \"85041\"\n        }\n    ],\n    \"email\": \"mickyjantest1.opendr@mailcatch.com\",\n    \"mrn\": \"OD798787891\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://apistest.opendr.com/staging/v1/patient",
+							"protocol": "https",
+							"host": [
+								"apistest",
+								"opendr",
+								"com"
+							],
+							"path": [
+								"staging",
+								"v1",
+								"patient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FetchPatient",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Patient created successfully\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "abc",
+								"value": "8989",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"{{fname}}\",\n    \"middleName\": \"{{mname}}\",\n    \"lastName\": \"{{lname}}\",\n    \"dateOfBirth\": \"1950-01-02\",\n    \"gender\": \"M\",\n    \"phone\": [\n        {\n            \"cellPhoneNo\": \"{{phone}}\",\n            \"homePhoneNo\": \"\",\n            \"workPhoneNo\": \"\"\n        }\n    ],\n    \"address\": [\n        {\n            \"address1\": \"{{add1}}\",\n            \"address2\": \"{{add2}}\",\n            \"state\": \"\",\n            \"city\": \"newyork\",\n            \"zipCode\": \"{{zipcode}}\"\n        }\n    ],\n    \"email\": \"mickyjantest1.opendr@mailcatch.com\",\n    \"mrn\": \"OD798787891\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://apistest.opendr.com/staging/v1/patient",
+							"protocol": "https",
+							"host": [
+								"apistest",
+								"opendr",
+								"com"
+							],
+							"path": [
+								"staging",
+								"v1",
+								"patient"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Royal Order API",
+			"item": [
+				{
+					"name": "CreateOrder Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbVowYW1WemMyVmhjR2wxYzJWeVFHMWhhV3hqWVhSamFDNWpiMjBpTENKcFlYUWlPakUyTXpReU1UVXlOekFzSW1WNGNDSTZNVFl6TkRJeE5qRTNNSDAuLTdBZjBhX0JtY283bjRacTUxQnYwdmFIOUpFejlOeWVEZFlJMDEtRU53Zw==",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"practice\": {\n        \"npi\": \"1245287143\",\n        \"practiceId\": \"1503\",\n        \"practiceName\": \"Ft Jesse Imaging\",\n        \"locationId\": \"FJI\"\n    },\n    \"orderInformation\": {\n        \"encounterNumber\": \"ODR20211014181111\"\n    },\n    \"patient\": {\n        \"firstName\": \"DAN\",\n        \"middleName\": \"\",\n        \"lastName\": \"TEST\",\n        \"dateOfBirth\": \"1994-04-28\",\n        \"gender\": \"M\",\n        \"phone\": [\n            {\n                \"cellPhoneNo\": \"1231231234\",\n                \"homePhoneNo\": \"6152222222\",\n                \"workPhoneNo\": \"1231231234\"\n            }\n        ],\n        \"address\": [\n            {\n                \"address1\": \"\",\n                \"address2\": \"\",\n                \"state\": \"\",\n                \"city\": \"\",\n                \"zipCode\": \"\"\n            }\n        ],\n        \"email\": \"test898@fakeemail.com\",\n        \"mrn\": \"ODR4802225\"\n    },\n    \"referringProvider\": {\n        \"firstName\": \"CARLY\",\n        \"middleName\": \"A\",\n        \"lastName\": \"TEST\",\n        \"npiNumber\": \"232323232\",\n        \"emrId\": \"232323232\",\n        \"address\": [\n            {\n                \"address1\": \"111 TEST AVENUE\",\n                \"address2\": \"\",\n                \"state\": \"TN\",\n                \"city\": \"FRANKLIN\",\n                \"zipCode\": \"37069\"\n            }\n        ],\n        \"phone\": [\n            {\n                \"cellPhoneNo\": \"\",\n                \"homePhoneNo\": \"6152612308\",\n                \"workPhoneNo\": \"\"\n            }\n        ],\n        \"email\": \"unknown@oiarad.com\"\n    },\n    \"ins_data\": [],\n    \"procedureInfo\": [\n        {\n            \"examOrderNumber\": \"ODR2021101418111154\",\n            \"diagnosis_code\": [{\"code\":\"Z12.2\"},{\"code\":\"Z12.2\"},{\"code\":\"Z12.2\"}],\n            \"procedureRisId\": \"MRCHSTWO\",\n            \"procedureCode\": \"MRCHSTWO\",\n            \"procedureDescription\": \"MRI CHEST WO CONTRAST 71550\",\n            \"bodyPart\": \"\",\n            \"subBodyPart\": \"\",\n            \"clinicalNotes\": \"\",\n            \"orderPriority\": \"Routine\",\n            \"isCancelled\": \"N\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8200/api/orders/hl7/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8200",
+							"path": [
+								"api",
+								"orders",
+								"hl7",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateOrderPut Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbkp0YVdGd2FYVnpaWEpBYldGcGJHTmhkR05vTG1OdmJTSXNJbWxoZENJNk1UWXhOREUxT1RBd055d2laWGh3SWpveE5qRTBNVFU1T1RBM2ZRLmpjTWpsY250NGplT08zOGE4OFJ3MWxXd2NGZ2R4d05KU1hueTNpckJJZ2c=",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"practice\": {\n            \"npi\": \"1989898989\",\n            \"practiceId\": \"1307\",\n            \"practiceName\": \"Regional Medical Imaging\"\n        },\n        \"orderInformation\": {\n            \"encounterNumber\": \"174858\"\n        },\n        \"patient\": {\n            \"firstName\": \"JohnD\",\n            \"middleName\": \"UserD\",\n            \"lastName\": \"DoeD\",\n            \"dateOfBirth\": \"1947-08-19\",\n            \"gender\": \"M\",\n            \"phone\": [\n                {\n                    \"cellPhoneNo\": \"2345234523\",\n                    \"homePhoneNo\": \"\",\n                    \"workPhoneNo\": \"\"\n                }\n            ],\n            \"address\": [\n                {\n                    \"address1\": \"test\",\n                    \"address2\": \"test\",\n                    \"state\": \"test\",\n                    \"city\": \"newyork\",\n                    \"zipCode\": \"10000\"\n                }\n            ],\n            \"email\": \"opendrtestuserd.opendr@opendr.com\",\n            \"mrn\": \"7845775\"\n        },\n    \"referringProvider\": {\n            \"firstName\": \"RefFrname\",\n            \"middleName\": \"User\",\n            \"lastName\": \"Opendr\",\n            \"npiNumber\": \"1989488994\",\n            \"emrId\": \"74658\",\n            \"address\": [\n                {\n                    \"address1\": \"test\",\n                    \"address2\": \"test\",\n                    \"state\": \"test\",\n                    \"city\": \"newyork\",\n                    \"zipCode\": \"10001\"\n                }\n            ],\n            \"phone\": [\n                {\n                    \"cellPhoneNo\": \"1231231232\",\n                    \"homePhoneNo\": \"\",\n                    \"workPhoneNo\": \"\"\n                }\n            ],\n            \"email\": \"refuser.opendr@opendr.com\"\n        },\n        \"ins_data\": [\n            {\n                \"insRisId\": \"1149\",\n                \"insurancePlan\": \"0\",\n                \"insurancePlanId\": \"0\",\n                \"insuranceCode\": \"41253616\",\n                \"insuranceCompany\": \"Anthem Blue Cross Blue Shield\",\n                \"subscriberMemberId\": \"sadasd\",\n                \"grpNumber\": \"512361611\",\n                \"subscriberFname\": \"\",\n                \"subscriberMname\": \"\",\n                \"subscriberLname\": \"John DOE\",\n                \"subscriberDob\": \"1943-03-15\",\n                \"subscriberGender\": \"Male\",\n                \"relationshipWithPatient\": \"Self\",\n                \"insType\": \"1\",\n                \"claimNumber\": \"\",\n                \"preauthCode\": \"\",\n                \"is_active\": \"1\"\n            },\n            {\n                \"insRisId\": \"1149\",\n                \"insurancePlan\": \"0\",\n                \"insurancePlanId\": \"0\",\n                \"insuranceCode\": \"41253616\",\n                \"insuranceCompany\": \"Anthem Blue Cross Blue Shield\",\n                \"subscriberMemberId\": \"sadasd\",\n                \"grpNumber\": \"512361611\",\n                \"subscriberFname\": \"\",\n                \"subscriberMname\": \"\",\n                \"subscriberLname\": \"John DOE\",\n                \"subscriberDob\": \"1943-03-15\",\n                \"subscriberGender\": \"Male\",\n                \"relationshipWithPatient\": \"Self\",\n                \"insType\": \"2\",\n                \"claimNumber\": \"\",\n                \"preauthCode\": \"\",\n                \"is_active\": \"1\"\n            }\n        ],\n        \"procedureInfo\": [\n        {\n            \"examOrderNumber\" : \"3676\",\n            \"diagnosis_code\": [{\n                \"code\": \"Z12.2\"\n            },\n            {\n                \"code\": \"Z12.2\"\n            }],\n            \"procedureRisId\": \"20550\",\n            \"procedureCode\": \"70450\",\n            \"procedureDescription\": \"CT Brain WO Contrast\",\n            \"bodyPart\": \"Head\",\n            \"subBodyPart\": \"Brain\",\n            \"orderPriority\":\"Routine\",\n            \"clinicalNotes\": \"\"\n        }\n    ]\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://apistest.opendr.com/staging/v1/api/orders/hl7/create",
+							"protocol": "https",
+							"host": [
+								"apistest",
+								"opendr",
+								"com"
+							],
+							"path": [
+								"staging",
+								"v1",
+								"api",
+								"orders",
+								"hl7",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Xconnect",
+			"item": [
+				{
+					"name": "saveWebhookFromMedcurrent Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"OD Account\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.response.organizationId).to.eql(7176067878);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"pre_auth_id\": \"1720\",\n    \"response\": {\n        \"timestamp\": 1637845198000,\n        \"partnerCaseId\": \"MTcyMHxzdGFnaW5nfA--\",\n        \"organizationId\": \"7176067878\",\n        \"panCaseId\": \"C-mame0htq\",\n        \"panUrl\": \"https:\\/\\/stage.priorauthnow.com\\/org\\/7176067878\\/case\\/C-mame0htq\",\n        \"status\": {\n            \"statusId\": \"PROCESSING\",\n            \"reasonDescription\": \"PrioArAuthNow is communicating with the benefit manager. Thank you for your patience.\",\n            \"reasonDescriptionId\": \"DESC_PROCESSING\",\n            \"benefitManagerNote\": null\n        },\n        \"decisionData\": [],\n        \"referenceIds\": []\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://stgc.opendr.vmenon/index/orderpreauthresult",
+							"protocol": "http",
+							"host": [
+								"stgc",
+								"opendr",
+								"vmenon"
+							],
+							"path": [
+								"index",
+								"orderpreauthresult"
+							]
+						},
+						"description": "Get CDS Score"
+					},
+					"response": []
+				},
+				{
+					"name": "getCdsScore Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Webhook  ID\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.procedureCode).to.eql(70450);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"trackingId\": \"trkOpenDr202001241726\",\n  \"patientDOB\": \"1985-04-15\",\n  \"physicianId\": 1,\n  \"patientGender\": \"Male\",\n  \"physicianFirstName\": \"Ben\",\n  \"physicianLastName\": \"Smith\",\n  \"clinicId\": 1303,\n  \"clinicName\": \"test\",\n  \"procedureCode\": \"70450\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8010/api/medcurrent/getcdsscore/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"medcurrent",
+								"getcdsscore",
+								""
+							]
+						},
+						"description": "Get CDS Score"
+					},
+					"response": []
+				},
+				{
+					"name": "PriorAuthNow---createCase Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"pm.response.to.have.header('Content-Type', 'application/json;');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(800);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"apiType\": \"priorAuthNow\",\n    \"pauthId\": \"1037\",\n    \"accountNumber\": \"MTAzN3xzdGFnaW5nfDA1NzMwMTcx\",\n    \"orderId\": \"MTAzN3xzdGFnaW5nfDA1NzMwMTcx\",\n    \"partnerRecordId\": \"MTAzN3xzdGFnaW5nfDA1NzMwMTcx\",\n    \"secondaryPayerName\": \"\",\n    \"medicalRecordNumber\": \"Ritz7656\",\n    \"ordAppointmentDate\": \"2021-04-29T06:41:50\",\n    \"ordAppointmentStatus\": \"NW\",\n    \"ordAppointmentLocation\": \"2006\",\n    \"risAppointmentId\": \"KT4346\",\n    \"priority\": \"Routine\",\n    \"payer\": {\n        \"vendorcode\": \"PAN.AETNA\",\n        \"name\": \"AETNA KY - PO BOX 14089\",\n        \"placeOfService\": \"Home\",\n        \"serviceType\": \"Other\",\n        \"phoneNumber\": \"\",\n        \"memberId\": \"ws33\",\n        \"planId\": \"\",\n        \"type\": \"1\"\n    },\n    \"patientId\": \"7416275\",\n    \"referringProviderId\": \"1156641\",\n    \"renderingFacilityId\": \"1389\",\n    \"procedures\": [\n        {\n            \"startDate\": \"2021-04-19\",\n            \"endDate\": \"2021-10-19\",\n            \"code\": \"74182\",\n            \"quantity\": \"1\",\n            \"quantityType\": \"Visit\"\n        }\n    ],\n    \"diagnosis\": [\n        {\n            \"code\": \"A00.9\",\n            \"date\": \"2021-04-19\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8020/priorauth/createcase/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8020",
+							"path": [
+								"priorauth",
+								"createcase",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PriorAuthNow---UpdateCase Copy",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"apiType\": \"priorAuthNow\",\n\t\"accountNumber\": \"1234Ereropendr16\",\n\t\"orderId\": \"1234Ereropendr16\",\n\t\"partnerRecordId\": \"1234Ereropendr\",\n\t\"secondaryPayerName\": \"UnitedHealthcare\",\n\t\"medicalRecordNumber\": \"234234234\",\n\t\"payer\":{\n      \"name\":\"Horizon BCBS of New Jersey\",\n      \"placeOfService\":\"Home\",\n      \"serviceType\":\"Other\",\n      \"phoneNumber\":\"7403326699\"\n    },\n\t\"patientId\": 5780359,\n\t\"referringProviderId\": \"905737\",\n\t\"renderingFacilityId\": \"5\",\n\t\"procedures\": [{\n\t\t\"startDate\": \"2020-01-16\",\n\t      \"endDate\": \"2020-01-31\",\n\t      \"code\": \"72074\",\n\t      \"quantity\": 1,\n\t      \"quantityType\": \"Visit\"\n\t\t\t}\n\t],\n\t\"diagnosis\" : [{\n\t\t\"code\": \"A01.01\",\n\t\t\"date\": \"2020-01-16\"\n\t}]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/priorauth/updatecase/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"priorauth",
+								"updatecase",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OrderInit Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"uniqueId\":\"NWUyZWZhYTE1ZjU0NWUyMDczOGZmODM5fDY3MTRiNTQ5LTM2OTctNGQ0NS05MDFlLWFlODM4YTVmYmJkZg==\",\n   \"practiceId\":\"1\",\n   \"referringDocId\":\"1\",\n   \"patientId\":\"1\",\n   \"ICDs\":[\n      {\n         \"code\":\"123\"\n      },\n      {\n         \"code\":\"87878\"\n      }\n   ],\n   \"procedureCode\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://stgcapis.opendr.com/orders/init",
+							"protocol": "http",
+							"host": [
+								"stgcapis",
+								"opendr",
+								"com"
+							],
+							"path": [
+								"orders",
+								"init"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateOrderFromCRM Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderInitId\": \"NWUzMDRjNjdlZTRiMzAwYjY1ZGU5NjNlfGI4NTEwNTg2LWI1N2UtNGZjNi1iMmU2LWNjNjUzNDYwMWIxYw==\",\n    \"providerId\": \"1254\",\n    \"providerType\": \"Practice\",\n    \"patientId\": \"7015547\",\n    \"rfcId\": \"14334\",\n    \"referringDoctorId\": \"740373\",\n    \"referringTypeId\": \"8\",\n    \"referringId\": \"740372\",\n    \"rfc_details\": [\n        {\n            \"uniqueCaseTransId\": \"Yjg1MTA1ODYtYjU3ZS00ZmM2LWIyZTYtY2M2NTM0NjAxYjFjfDc0MTgy\",\n            \"icds\": [\n                {\n                    \"icd\": \"A0100\"\n                }\n            ],\n            \"rfc_description\": \"MR Abdomen w/ Contrast\",\n            \"preAuthCode\": \"\",\n            \"clinicalNotes\": \"\",\n            \"fileName\": \"\",\n            \"cpt_code_id\": \"67235\",\n            \"technology\": \"CT SCAN\",\n            \"laterality\": \"left\",\n            \"priority\": \"Urgent\"\n        }\n    ],\n    \"insCompanyId\": \"1\",\n    \"insPolicyId\": \"2\",\n    \"insSubscriberId\": \"3\",\n    \"insAddId\": \"4\",\n    \"signatureDate\": \"\",\n    \"signatureName\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8030/orders/crm/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8030",
+							"path": [
+								"orders",
+								"crm",
+								"create"
+							]
+						},
+						"description": "Create Orders Through API In CRM"
+					},
+					"response": []
+				},
+				{
+					"name": "PriorAuthNow --isPayerSupported Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"apiType\": \"pan\",\n  \"memberId\": 12345,\n  \"masterPayerName\": \"aetna\",\n  \"cptCodes\": [\n  \t\t{\n  \t\t\t\"code\": \"70450\"\n  \t\t}\n  \t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8020/priorauth/ispayersupported/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8020",
+							"path": [
+								"priorauth",
+								"ispayersupported",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Order From CRM Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCase Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateOrderFromHl7 Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patient_id\": \"7334152\",\n    \"hl7_order_id\": \"71844\",\n    \"first_name\": \"ZZZTEST\",\n    \"middle_name\": \"L\",\n    \"last_name\": \"ZZZPATIENT\",\n    \"mrn\": \"1235783471OD\",\n    \"patient_email\": \"\",\n    \"exam_code\": \"70450\",\n    \"reason_for_study\": null,\n    \"order_note\": \"\",\n    \"phone_number1\": \"\",\n    \"phone_number2\": \"\",\n    \"cell_number\": \" (714)8785400\",\n    \"dob\": \"1959-06-27\",\n    \"gender\": \"Female\",\n    \"address1\": \"100 TEST ADDRESS\",\n    \"address2\": \"\",\n    \"city\": \"NEW YORK\",\n    \"state\": \"NY\",\n    \"zipcode\": \"10016\",\n    \"active\": \"1\",\n    \"client_id\": \"183\",\n    \"created\": \"2021-06-17 15:29:15\",\n    \"diagnosis_code\": [\n        {\n            \"code\": \"H47.10\"\n        }\n    ],\n    \"order_no\": \"202144MRM3WJB2306211201\",\n    \"order_encounter\": \"202144MRM3WJB2306211201\",\n    \"ord_appt_location\": \"503\",\n    \"order_priority\": null,\n    \"web_ord_id\": \"71398\",\n    \"order_status\": \"XX\",\n    \"ord_appt_status\": \"XX\",\n    \"order_provider_user_id\": \"1175495\",\n    \"order_provider_first_name\": \"SIMON\",\n    \"order_provider_last_name\": \"KAYYAL\",\n    \"order_created_date\": \"2021-06-17 15:29:15\",\n    \"ord_appt_date\": \"2021-07-28 08:27:00\",\n    \"last_update_from\": \"DRPACS\",\n    \"modified\": \"2021-06-18 16:21:25\",\n    \"appt_id\": null,\n    \"web_patient_id\": \"7334152\",\n    \"patient_opt_out\": null,\n    \"auto_acc\": null,\n    \"date_of_acc\": null,\n    \"job_injury\": null,\n    \"adjuster_name\": null,\n    \"adjuster_contact\": null,\n    \"ins_data\": [\n        {\n            \"insId\": \"PAN.MOCK\",\n            \"insurance_plan\": \"\",\n            \"insurance_plan_id\": \"0\",\n            \"insurance_code\": \"PAN.MOCK\",\n            \"contact_address\": \"\",\n            \"insurance_company\": \"Priorauthnow Mock\",\n            \"grp_number\": \"\",\n            \"subscriber_fn\": \"ZZZTEST\",\n            \"subscriber_mn\": \"L\",\n            \"subscriber_ln\": \"ZZZPATIENT\",\n            \"subscriber_member_id\": \"IN-REVIEW\",\n            \"subscriber_dob\": \"1959-06-27\",\n            \"subscriber_gender\": \"Female\",\n            \"relationship_with_patient\": \"18\",\n            \"ins_type\": \"1\",\n            \"claim_number\": \"\",\n            \"adjuster_contact_lname\": \"\",\n            \"adjuster_contact_fname\": \"\",\n            \"adjuster_contact_mname\": \"\",\n            \"adjuster_contact_phone\": \"\",\n            \"is_active\": \"1\"\n        }\n    ],\n    \"order_ins_data\": \"ins_type=1::order_encounter=::adjuster_name=::auto_acc=::date_of_acc=::adjuster_contact=::patient_insurance_id=13904186\",\n    \"referring_doctor_id\": \"1175495\",\n    \"clinical_attachments\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8200/orders/hl7/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8200",
+							"path": [
+								"orders",
+								"hl7",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patient Auto Login API Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://stgcapis.opendr.com/patient",
+							"protocol": "http",
+							"host": [
+								"stgcapis",
+								"opendr",
+								"com"
+							],
+							"path": [
+								"patient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddClient Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": \"1\",\n\t\"name\": \"IBM Merge\",\n\t\"email\": \"ibmmerge@mailcatch.com\",\n\t\"is_active\": \"Y\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/client",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetClientById Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddUser Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 2,\n\t\"name\": \"APi OpenDrr\",\n\t\"username\":\"apis@opendr.com\",\n\t\"password\": \"test$1234\",\n\t\"clientId\": 1,\n\t\"clientPublicKey\": \"OD1234\",\n\t\"clientPrivateKey\": \"ODOJSHJJKLDJDKLJDKLNDLKJ\",\n\t\"is_active\": \"Y\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "practiceId",
+								"value": "1223",
+								"type": "text"
+							},
+							{
+								"key": "practiceName",
+								"value": "University Radiology",
+								"type": "text"
+							},
+							{
+								"key": "clientApiKey",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"urgapiuser@mailcatch.com\",\n\t\"password\": \"6d35ebf644acee05c7cfda665b3686f0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://stgcapis.opendr.com/oauth/login",
+							"protocol": "http",
+							"host": [
+								"stgcapis",
+								"opendr",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "VerifyToken Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "clientId",
+								"value": "1",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "ZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SjFjMlZ5Ym1GdFpTSTZJbUZ3YVhOQWIzQmxibVJ5TG1OdmJTSXNJbWxoZENJNk1UVTROamsxT1RnMU5Dd2laWGh3SWpveE5UZzJPVFU1T1RjMGZRLl9rZklKNC1leURCblZ2dExvUXFPLVBhX2pMcVRqZUVvaXQ4VjB5RzljTFU=",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/oauth/verify",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"oauth",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IconnectAccess Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"patientId\": \"11992859\",\n    \"userId\": \"11992859\",\n    \"accessionNumber\": \"07504168\",\n    \"providerId\": 1384\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8010/api/iconnect/generateurl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"api",
+								"iconnect",
+								"generateurl"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DecryptIconnectString Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Webhook Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UploadClinicalFromRis Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AdddPatientThroughweb Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ShortUrl Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"practiceId\": \"1303\",\n    \"actualUrl\": \"https://portaltest.opendr.com\",\n    \"refId\": 13432,\n    \"refType\": \"Order\",\n    \"validFrom\": \"2021-03-10 00:00:00\",\n    \"validTo\": \"2021-03-11 23:59:59\",\n    \"isActive\": \"1\",\n    \"isMultipleClicksAllow\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://apistest.opendr.com/staging/v1/api/utilities/shorturl",
+							"protocol": "https",
+							"host": [
+								"apistest",
+								"opendr",
+								"com"
+							],
+							"path": [
+								"staging",
+								"v1",
+								"api",
+								"utilities",
+								"shorturl"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddPractice Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"practiceNpi\": \"76987360541\",\n    \"partnerId\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://10.142.0.80:8100/api/generate/practiceid/create",
+							"protocol": "http",
+							"host": [
+								"10",
+								"142",
+								"0",
+								"80"
+							],
+							"port": "8100",
+							"path": [
+								"api",
+								"generate",
+								"practiceid",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddReferringDoctorFromWeb Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"RefFrname\",\n    \"middleName\": \"User\",\n    \"lastName\": \"Opendr\",\n    \"npiNumber\": \"1989488995\",\n    \"emrId\": \"74658\",\n    \"address\": [\n        {\n            \"address1\": \"test\",\n            \"address2\": \"test\",\n            \"state\": \"test\",\n            \"city\": \"newyork\",\n            \"zipCode\": \"10001\"\n        }\n    ],\n    \"phone\": [\n        {\n            \"cellPhoneNo\": \"1231231232\",\n            \"homePhoneNo\": \"\",\n            \"workPhoneNo\": \"\"\n        }\n    ],\n    \"email\": \"refuser.opendr@opendr.com\",\n    \"practiceId\": \"1257\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://portalwatsontest.opendr.com/api/addrefdoctor",
+							"protocol": "https",
+							"host": [
+								"portalwatsontest",
+								"opendr",
+								"com"
+							],
+							"path": [
+								"api",
+								"addrefdoctor"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
